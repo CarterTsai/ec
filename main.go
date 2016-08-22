@@ -11,6 +11,8 @@ import (
 func main() {
 	// config
 	server := iris.New(config.Init())
+	// Favicon
+	iris.Favicon("./public/favicon.ico")
 	// template with django
 	server.UseTemplate(django.New()).Directory("./views", ".html")
 	// router
