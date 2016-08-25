@@ -2,142 +2,67 @@ package jet
 
 import (
 	"io"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"strings"
 	"sync"
 
 	"fmt"
-    "github.com/CloudyKit/jet"
-
 )
 
-// Supports RAW markdown only, no context binding or layout, to use dynamic markdown with other template engine use the context.Markdown/MarkdownString
-
 type (
-    // Engine the jet engine
+	// Engine the jet engine
 	Engine struct {
 		Config        Config
-		templateCache map[string][]byte
+		templateCache map[string]interface{}
 		mu            sync.Mutex
 	}
 )
 
 // New creates and returns a Pongo template engine
 func New(cfg ...Config) *Engine {
+	fmt.Println("[New Engine For Jet]")
+
 	c := DefaultConfig()
 	if len(cfg) > 0 {
 		c = cfg[0]
 	}
 
-	return &Engine{Config: c, templateCache: make(map[string][]byte)}
+	return &Engine{Config: c, templateCache: make(map[string]interface{})}
 }
 
 // LoadDirectory builds the markdown templates
-func (e *Engine) LoadDirectory(dir string, extension string) error {
-	var templateErr error
-	// Walk the supplied directory and compile any files that match our extension list.
-	filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
-
-		if info == nil || info.IsDir() {
-
-		} else {
-
-			rel, err := filepath.Rel(dir, path)
-			if err != nil {
-				templateErr = err
-				return err
-			}
-
-			ext := filepath.Ext(rel)
-
-			if ext == extension {
-				buf, err := ioutil.ReadFile(path)
-				if err != nil {
-					templateErr = err
-					return err
-				}
-
-				buf = blackfriday.MarkdownCommon(buf)
-				if e.Config.Sanitize {
-					buf = bluemonday.UGCPolicy().SanitizeBytes(buf)
-				}
-
-				if err != nil {
-					templateErr = err
-					return err
-				}
-				name := filepath.ToSlash(rel)
-				e.templateCache[name] = buf
-
-			}
-		}
-		return nil
-	})
-
-	return templateErr
-
-}
-
-// LoadAssets loads the templates by binary
-func (e *Engine) LoadAssets(virtualDirectory string, virtualExtension string, assetFn func(name string) ([]byte, error), namesFn func() []string) error {
-	if len(virtualDirectory) > 0 {
-		if virtualDirectory[0] == '.' { // first check for .wrong
-			virtualDirectory = virtualDirectory[1:]
-		}
-		if virtualDirectory[0] == '/' || virtualDirectory[0] == os.PathSeparator { // second check for /something, (or ./something if we had dot on 0 it will be removed
-			virtualDirectory = virtualDirectory[1:]
-		}
-	}
-	names := namesFn()
-	for _, path := range names {
-		if !strings.HasPrefix(path, virtualDirectory) {
-			continue
-		}
-
-		rel, err := filepath.Rel(virtualDirectory, path)
-		if err != nil {
-			return err
-		}
-
-		ext := filepath.Ext(rel)
-		if ext == virtualExtension {
-
-			buf, err := assetFn(path)
-			if err != nil {
-				return err
-			}
-			b := blackfriday.MarkdownCommon(buf)
-			if e.Config.Sanitize {
-				b = bluemonday.UGCPolicy().SanitizeBytes(b)
-			}
-			name := filepath.ToSlash(rel)
-			e.templateCache[name] = b
-
-		}
-
-	}
+func (j *Engine) LoadDirectory(dir string, extension string) error {
+	fmt.Println("[LoadDirectory For Jet]", dir, extension)
 	return nil
 }
 
-func (e *Engine) fromCache(relativeName string) []byte {
-	e.mu.Lock()
+// LoadAssets loads the templates by binary
+func (j *Engine) LoadAssets(virtuaDir string, virtualExt string, assetFn func(name string) ([]byte, error), namesFn func() []string) error {
+	fmt.Println("[LoadAssets For Jet]")
+	fmt.Println(virtuaDir, virtualExt)
+	return nil
+}
 
-	tmpl, ok := e.templateCache[relativeName]
+func (j *Engine) fromCache(relativeName string) []byte {
+	fmt.Println("[fromCache For Jet]", relativeName)
+	j.mu.Lock()
+
+	ok := true
 
 	if ok {
-		e.mu.Unlock() // defer is slow
-		return tmpl
+		j.mu.Unlock() // defer is slow
+		return nil
 	}
-	e.mu.Unlock() // defer is slow
+	j.mu.Unlock() // defer is slow
 	return nil
 }
 
 // ExecuteWriter executes a templates and write its results to the out writer
 // layout here is useless
-func (e *Engine) ExecuteWriter(out io.Writer, name string, binding interface{}, options ...map[string]interface{}) error {
-	if tmpl := e.fromCache(name); tmpl != nil {
+func (j *Engine) ExecuteWriter(out io.Writer, name string, binding interface{}, options ...map[string]interface{}) error {
+
+	fmt.Println("[ExecuteWriter]")
+	fmt.Println(out, name, binding, options)
+
+	if tmpl := j.fromCache(name); tmpl != nil {
 		_, err := out.Write(tmpl)
 		return err
 	}
