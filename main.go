@@ -14,7 +14,7 @@ func main() {
 	// Favicon
 	iris.Favicon("./public/favicon.ico")
 	// template with django
-	server.UseTemplate(jet.New()).Directory("./views", ".html")
+	server.UseTemplate(jet.New()).Directory("./views", ".jet")
 	// router
 	router.Init(server)
 	server.Listen(":8888")

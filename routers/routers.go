@@ -2,6 +2,7 @@ package router
 
 import (
 	"fmt"
+
 	"github.com/kataras/iris"
 )
 
@@ -15,7 +16,7 @@ func Init(server *iris.Framework) {
 func Home(ctx *iris.Context) {
 	ctx.Session().Set("name", "CaterTsai")
 	fmt.Println(ctx.Session())
-	ctx.Render("index.html", map[string]interface{}{"username": "iris", "is_admin": true})
+	ctx.Render("index.jet", map[string]interface{}{"username": "iris", "is_admin": true})
 }
 
 // User user router
