@@ -2,6 +2,7 @@
 <html>
   <head></head>
   <title>test</title>
+  <link rel="stylesheet" href="public/css/mobi/mobi.min.css">
   <body>
     {{yield body()}}
   </body>

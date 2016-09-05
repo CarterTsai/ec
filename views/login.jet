@@ -1,0 +1,11 @@
+{{extends "layouts/layout.jet"}}
+{{block body()}}
+    <div>
+        <form class="form" action="#basic-forms">
+          <input type="text" placeholder="Name"/>
+          <input type="email" placeholder="Email"/>
+          <label class="flex-middle"><input type="checkbox"/>I agree to terms.</label>
+          <input type="submit" value="Sign Up Now"/>
+        </form>
+    </div>
+{{end}}

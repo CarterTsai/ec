@@ -11,6 +11,8 @@ import (
 func main() {
 	// config
 	server := iris.New(config.Init())
+	// Static File Path
+	iris.StaticServe("./public")
 	// Favicon
 	iris.Favicon("./public/favicon.ico")
 	// template with django

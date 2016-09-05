@@ -8,6 +8,7 @@ import (
 
 // Init Project Config Init
 func Init() config.Iris {
+	config.StaticCacheDuration = time.Duration(1)
 
 	return config.Iris{
 		IsDevelopment: true,
