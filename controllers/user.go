@@ -6,5 +6,5 @@ import "github.com/kataras/iris"
 func User(ctx *iris.Context) {
 	name := ctx.Session().GetString("name")
 
-	ctx.Render("user.html", map[string]interface{}{"username": name})
+	ctx.Render("user.jet", map[string]interface{}{"username": name})
 }

@@ -1,0 +1,24 @@
+.header {
+    background-color: #ccc;
+    padding-top: 50px;: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.values-heading, .value-description {
+    text-align: center;
+}
+
+.login .one-third {
+    text-align: center;
+}
+
+.login .login-box {
+     margin-top: 40px;
+     margin-bottom: 40px;
+}
+
+.login .input-box {
+     margin-bottom: 30px;
+}

@@ -1,0 +1,8 @@
+{{extends "layouts/layout.jet"}}
+{{block body()}}
+  <div class="flex-center">
+    <div class="container">
+      <h1>Mobi.css</h1>
+    </div>
+  </div>
+{{end}}

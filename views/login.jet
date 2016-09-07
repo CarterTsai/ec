@@ -1,11 +1,21 @@
 {{extends "layouts/layout.jet"}}
 {{block body()}}
-    <div>
-        <form class="form" action="#basic-forms">
-          <input type="text" placeholder="Name"/>
-          <input type="email" placeholder="Email"/>
-          <label class="flex-middle"><input type="checkbox"/>I agree to terms.</label>
-          <input type="submit" value="Sign Up Now"/>
-        </form>
+<div class="section login">
+    <div class="container">
+        <div class="row">
+            <div class="one-third column"> &nbsp; </div>
+            <div class="one-third column login-box">
+                <div class="input-box">
+                    <input class="u-full-width" type="email" placeholder="Email"/>
+                </div>
+                <div class="input-box">
+                    <input class="u-full-width" type="password" placeholder="Password">
+                </div>
+                <label class="flex-middle"><input type="checkbox"/>I agree to terms.</label>
+                <input class="button-primary" type="submit" value="Sign Up Now"/>
+            </div>
+            <div class="one-third column"> &nbsp; </div>
+        </div>
     </div>
+</div>
 {{end}}

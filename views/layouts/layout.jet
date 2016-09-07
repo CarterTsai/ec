@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head></head>
-  <title>test</title>
-  <link rel="stylesheet" href="public/css/mobi/mobi.min.css">
+  <title>EC</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" href="public/css/skeleton/skeleton.css">
+  <link rel="stylesheet" href="public/css/skeleton/normalize.css">
+  <link rel="stylesheet" href="public/css/main.css">
   <body>
     {{yield body()}}
   </body>
