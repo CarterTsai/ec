@@ -1,13 +1,27 @@
-.header {
-    background-color: #ccc;
-    padding-top: 50px;: 50px;
+.section.header {
+    background-color: #D2691E;
+    color:#ffffff;
+    padding-top: 50px;
     padding-bottom: 50px;
     margin-bottom: 40px;
     text-align: center;
+    font-size: 10vmin;
+}
+
+.section .section-description {
+    font-size: 4vmin;
 }
 
 .values-heading, .value-description {
     text-align: center;
+}
+
+.section.values .values-heading {
+    font-size: 5vmin;
+}
+
+.section.values .value-description {
+    font-size: 3vmin;
 }
 
 .login .one-third {
@@ -21,4 +35,9 @@
 
 .login .input-box {
      margin-bottom: 30px;
+}
+
+.button.button-info {
+    background-color: #fff;
+    color: #000;
 }
