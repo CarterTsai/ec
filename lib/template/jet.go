@@ -60,6 +60,7 @@ func (j *Engine) LoadDirectory(dir string, extension string) error {
 			if ext == extension {
 				templateView, err := j.view.GetTemplate(relPath)
 				if err != nil {
+					fmt.Println(err)
 					templateErr = err
 					return err
 				}

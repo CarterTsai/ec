@@ -1,28 +1,28 @@
 {{extends "layouts/layout.jet"}}
 {{block body()}}
-  <div class="section header">
-    <div class="container">
-      <h2 class="section-heading">Fast, Security, Friendly EC Framework</h2>
-      <p class="section-description">You Can Try It.</p>
-      <a class="button button-info" href="https://github.com/CarterTsai/ec"  target="_blank">Try EC</a>
-    </div>
+<div class="section header">
+  <div class="container">
+    <h2 class="section-heading">Fast, Security, Friendly EC Framework</h2>
+    <p class="section-description">You Can Try It.</p>
+    <a class="button button-info" href="https://github.com/CarterTsai/ec"  target="_blank">Try EC</a>
   </div>
-  <div class="section values">
-    <div class="container">
-      <div class="row">
-        <div class="one-third column value">
-          <h5 class="values-heading">Jet</h5>
-          <p class="value-description">Template Engine</p>
-        </div>
-        <div class="one-third column value">
-          <h5 class="values-heading">Iris</h5>
-          <p class="value-description">The fastest backend web framework for Go</p>
-        </div>
-        <div class="one-third column value">
-          <h5 class="values-heading">Skeleton</h5>
-          <p class="value-description">A dead simple, responsive boilerplate.</p>
-        </div>
+</div>
+<div class="section values">
+  <div class="container">
+    <div class="row">
+      <div class="one-third column value">
+        <h5 class="values-heading">Jet</h5>
+        <p class="value-description">Template Engine</p>
+      </div>
+      <div class="one-third column value">
+        <h5 class="values-heading">Iris</h5>
+        <p class="value-description">The fastest backend web framework for Go</p>
+      </div>
+      <div class="one-third column value">
+        <h5 class="values-heading">Skeleton</h5>
+        <p class="value-description">A dead simple, responsive boilerplate.</p>
       </div>
     </div>
   </div>
+</div>
 {{end}}
