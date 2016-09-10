@@ -3,20 +3,20 @@ package config
 import (
 	"time"
 
-	"github.com/kataras/iris/config"
+	"github.com/kataras/iris"
 )
 
 // Init Project Config Init
-func Init() config.Iris {
-	config.StaticCacheDuration = time.Duration(0)
+func Init() iris.Configuration {
+	iris.StaticCacheDuration = time.Duration(0)
 
-	return config.Iris{
+	return iris.Configuration{
 		IsDevelopment: true,
 		Gzip:          true,
 		Charset:       "UTF-8",
-		Sessions: config.Sessions{
+		Sessions: iris.SessionsConfiguration{
 			Cookie:                      "ecsessionid",
-			CookieLength:                config.DefaultCookieLength,
+			CookieLength:                iris.DefaultCookieLength,
 			DecodeCookie:                false,
 			Expires:                     time.Duration(2) * time.Hour,
 			DisableSubdomainPersistence: false,
