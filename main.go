@@ -11,6 +11,8 @@ import (
 func main() {
 	// config
 	server := iris.New(config.Init())
+	// logger
+
 	// template with enginer
 	server.UseTemplate(jet.New()).Directory("./views", ".jet")
 	// router
