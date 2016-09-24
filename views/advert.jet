@@ -1,0 +1,9 @@
+{{extends "layouts/layout.jet"}}
+{{block body()}}
+  <div class="flex-center">
+    <div class="container">
+      <h1>Advert</h1>
+      {{title}}
+    </div>
+  </div>
+{{end}}

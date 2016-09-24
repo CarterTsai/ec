@@ -2,7 +2,7 @@ package main
 
 import (
 	"ec/config"
-	"ec/lib/template"
+	"ec/lib/templateEngine"
 	"ec/routers"
 
 	"github.com/kataras/iris"

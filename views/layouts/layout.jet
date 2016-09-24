@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head></head>
-  <title>EC</title>
+  <title>{{ isset(title) ? title : "EC" }}</title>
   <!-- Favicon -->
   <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
   <!-- Mobile Specific Metas -->
@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="public/css/skeleton/skeleton.css">
   <link rel="stylesheet" href="public/css/skeleton/normalize.css">
   <link rel="stylesheet" href="public/css/main.css">
+  <!-- JS -->
+  <script src="public/js/common.js"></script>
   <body>
     {{yield body()}}
   </body>

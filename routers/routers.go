@@ -16,6 +16,7 @@ func Init(server *iris.Framework) {
 	server.Get("/", controller.Home)
 	server.Get("/user", controller.User)
 	server.Get("/login", controller.Login)
+	server.Get("/advert", controller.Advert)
 	// Error Router
 	server.OnError(iris.StatusNotFound, controller.Error404)
 }

@@ -97,11 +97,12 @@ func (j *Engine) fromCache(relativeName string) *jet.Template {
 // ExecuteWriter executes a templates and write its results to the out writer
 // layout here is useless
 func (j *Engine) ExecuteWriter(out io.Writer, name string, binding interface{}, options ...map[string]interface{}) error {
-
 	fmt.Println("[ExecuteWriter]")
-
 	if tmpl := j.fromCache(name); tmpl != nil {
-		err := tmpl.Execute(out, nil, nil)
+
+		err := tmpl.Execute(out, binding.(jet.VarMap), nil)
+
+		fmt.Println(err)
 		return err
 	}
 
