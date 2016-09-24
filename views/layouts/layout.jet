@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head></head>
-  <title>{{ isset(title) ? title : "EC" }}</title>
+  <title>{{ isset(Title) ? Title : "EC" }}</title>
   <!-- Favicon -->
   <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
   <!-- Mobile Specific Metas -->

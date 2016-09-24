@@ -14,7 +14,12 @@ func main() {
 	// logger
 
 	// template with enginer
-	server.UseTemplate(jet.New()).Directory("./views", ".jet")
+	viewGlobal := jet.DefaultConfig()
+	viewGlobal.Layout = ""
+	viewGlobal.Vars["Version"] = "v1.0.0"
+	viewGlobal.Vars["Title"] = "EC - V1"
+
+	server.UseTemplate(jet.New(viewGlobal)).Directory("./views", ".jet")
 	// router
 	router.Init(server)
 	// run Server

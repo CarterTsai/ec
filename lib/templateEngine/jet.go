@@ -53,6 +53,10 @@ func (j *Engine) LoadDirectory(dir string, extension string) error {
 			if j.view == nil {
 				j.view = jet.NewHTMLSet(dir)
 				j.view.SetDevelopmentMode(true)
+				//j.view.AddGlobal("Version", j.Config.Vars["Version"])
+				for k, v := range j.Config.Vars {
+					j.view.AddGlobal(k, v)
+				}
 			}
 			// get file extension ex. '.html'
 			ext := filepath.Ext(relPath)
@@ -99,6 +103,10 @@ func (j *Engine) fromCache(relativeName string) *jet.Template {
 func (j *Engine) ExecuteWriter(out io.Writer, name string, binding interface{}, options ...map[string]interface{}) error {
 	fmt.Println("[ExecuteWriter]")
 	if tmpl := j.fromCache(name); tmpl != nil {
+
+		if binding == nil {
+			binding = make(jet.VarMap)
+		}
 
 		err := tmpl.Execute(out, binding.(jet.VarMap), nil)
 

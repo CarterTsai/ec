@@ -7,6 +7,9 @@ import (
 
 // Home home route
 func Home(ctx *iris.Context) {
-	ctx.Session().Set("name", "CaterTsai")
-	ctx.Render("index.jet", jet.VarMap{"username": "iris", "is_admin": true})
+	//ctx.Session().Set("name", "CaterTsai")
+
+	vars := make(jet.VarMap)
+	vars.Set("title", "Ec")
+	ctx.Render("index.jet", vars)
 }
